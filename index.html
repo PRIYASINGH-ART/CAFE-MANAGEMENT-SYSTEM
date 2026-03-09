@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beans & Brew - Management</title>
+     <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <div class="menu-side">
+        <div class="header">
+            <h1 id="welcome-msg">☕ Beans & Brew</h1>
+            <div class="search-container">
+                <input type="text" id="menuSearch" placeholder="Search menu..." onkeyup="filterMenu()" >
+            </div>
+            <button onclick="location.href='order.html'" style="background:white; border:none; padding:6px 12px; border-radius:20px; cursor:pointer;  font-weight:bold; color:#3d2b1f;">view all Orders</button>
+        </div>
+           
+
+        <div class="grid">
+            <div class="card" onclick="addItem('Classic Latte', 312)">
+                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=500">
+                <div class="card-info"><h3>Classic Latte</h3><p>rupees 312</p></div>
+            </div>
+            <div class="card" onclick="addItem('Espresso', 245)">
+                <img src="https://www.sharmispassions.com/wp-content/uploads/2012/07/espresso-coffee-recipe04-500x500.jpg">
+                <div class="card-info"><h3>Espresso</h3><p>rupees 245</p></div>
+            </div>
+            
+            <div class="card" onclick="addItem('Americano',280)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYfE4fnUPGLsOY-6HVFZIXXR_8W4yT0bUKkQ&s">
+                <div class="card-info"><h3> Americano</h3><p>rupees 280</p></div>
+            </div>
+            <div class="card" onclick="addItem('Cappuccino', 350)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAVt__A8bvTk9UbAp6N28awtRlQjJxssNuLA&s">
+                <div class="card-info"><h3>cappuccino</h3><p>rupees 350</p></div>
+            </div>
+            <div class="card" onclick="addItem('Mocha',420)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXInvkT6S-UKGa0J3jSp8do1xQvOfMHixZPw&s">
+                <div class="card-info"><h3>mocha </h3><p>rupees 420</p></div>
+            </div>
+            <div class="card" onclick="addItem('Macchiato', 295)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxSamQqtFdhRyesAb19i8f4FAdanGpyHW4Pg&s">
+                <div class="card-info"><h3>macchiato </h3><p>rupees 295</p></div>
+            </div>
+            <div class="card" onclick="addItem('Cold Brew',365)">
+                <img src="https://www.thecaffeinebaar.com/cdn/shop/articles/Recipe-_0003_cold_brew_1500x.jpg?v=1636717199">
+                <div class="card-info"><h3>Cold brew </h3><p>rupees 365</p></div>
+            </div>
+            <div class="card" onclick="addItem('Aero Press',380)">
+                <img src="https://ravecoffee.co.uk/cdn/shop/articles/Coffee_Blog_2_868x572.png?v=1711459344">
+                <div class="card-info"><h3>Aero press </h3><p>rupees 380</p></div>
+            </div>
+
+            <div class="card" onclick="addItem('Affogato',451)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLBFFjfEohlgz-cDQgDRu7TDY9YBP1FMR4bA&s">
+                <div class="card-info"><h3>Affogato </h3><p>rupees 451</p></div>
+            </div>
+
+            <div class="card" onclick="addItem('Filter Coffee', 225)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDakVvPMqjbyBF9naxpr1xQSz_kPoKv3iUIQ&s">
+                <div class="card-info"><h3>Filter Coffee </h3><p>rupees 225</p></div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div class="bill-side">
+        <div style="display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+                background: rgba(255,255,255,0.1);
+                padding: 10px;
+                border-radius: 10px;">
+                
+            <div id="user-initial" style="width: 40px;
+                height: 40px; 
+                background: #d4a373;
+                border-radius: 50%;
+                display: flex;
+                align-items: center; 
+                justify-content: center; 
+                font-weight: bold;">?</div>
+            <div>
+                <div style="font-size: 12px; opacity: 0.8;">Active Staff</div>
+                <div id="staff-name" style="font-size: 15px; font-weight: bold;">loading...</div>
+        </div>
+                    <button onclick="logout()" style=" margin-left:auto; background:  white;  border: 1px solid #b37851; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">  Logout</button>
+        
+    </div>
+    <div style="background:#4e3a2d; padding:15px; border-radius:10px; margin-bottom:15px; border-left: 4px solid #d4a373;">
+    <b>Today's Sales:</b> <br>
+    <span style="font-size:1.2em;">rupees<span id="today-sales">00</span></span>
+</div>
+        <h2>Order Summary</h2>
+        <div class="bill-items" id="bill-items"></div>
+        <div class="total-row"><span>Total</span><span>rupees<span id="total-val">00</span></span></div>
+        <input type="number" id="cash" placeholder="Cash Received" oninput="calcChange()">
+        <div style="display:flex; justify-content:space-between; margin: 10px 0; font-size: 1.1em;"><span>Change:</span><span>rupees<span id="change-val">00</span></span></div>
+        
+        <button class="btn-pay" onclick="completeSale()">Print Receipt</button>
+        <button onclick="clearCart()" 
+style="margin-top:10px;background:#671d1d;color:white;border:none;padding:10px;border-radius:8px;width:100%; cursor:pointer; opacity:0.9;">
+Clear Cart
+</button>
+    </div>
+    <div id="receiptmodal">
+        <div class="receipt-content">
+            <h2 style="text-align:center; color:#3d2b1f; margin:0;">BEANS & BREW</h2>
+           <p style="text-align:center; font-size:12px; margin-bottom:10px;">quality Coffee &Co.</p>
+<hr>   
+ <div id="receipt-list"></div>
+<hr>
+<div id="receipt-total" style="font-weight:bold; font-size:1.2em; margin-top:10px;"></div>
+<p style="text-align:center; margin-top:20px;">Thank you for visiting!</p>
+<button onclick="printReceipt()" 
+style="width:100%;padding:10px;background:#3d2b1f;color:white;border:none;border-radius:5px;margin-top:10px; cursor:pointer;">
+Print receipt
+</button>
+<button onclick="closeReceipt()" style="width:100%; padding: 10px; background:#d4a373; color:white; border:none; border-radius:5px;  margin-top:10px; cursor:pointer;">New Order</button>
+<button onclick="location.href='order.html'">View Orders</button>
+   </div>
+    </div>
+   <script src="script.js"> </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - Beans & Brew</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Specific tweaks for the order history page */
+        body {
+            background-color: #edeca3; /* Matches your login/register background */
+            display: block; /* Overrides the flex centering from style.css */
+            padding: 40px;
+            color: #3d2b1f;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        #order-list {
+            margin-top: 20px;
+        }
+        .no-orders {
+            text-align: center;
+            padding: 50px;
+            background: rgba(70, 37, 1, 0.1);
+            border-radius: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="order-header">
+            <h1 style="color: #462501; margin: 0;">📜 All Orders</h1>
+            <button onclick="location.href='index.html'" 
+                style="background:#462501; color:white; border:none; padding:10px 20px; border-radius:25px; cursor:pointer; font-weight:bold;">
+                Back to POS
+            </button>
+        </div>
+
+        <div id="order-list">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check if there are no orders and show a message
+        window.onload = function() {
+            const list = document.getElementById("order-list");
+            if (list && list.innerHTML.trim() === "") {
+                list.innerHTML = `<div class="no-orders">No orders found in the history.</div>`;
+            }
+        };
+    </script>
+</body>
+</html>
