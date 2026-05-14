@@ -27,11 +27,6 @@ This project simulates a real coffee shop management system with authentication,
 
 ---
 
-## 📷 Screenshots
-
-(Add screenshots here after uploading images)
-
----
 
 ## 📌 How to Run
 
